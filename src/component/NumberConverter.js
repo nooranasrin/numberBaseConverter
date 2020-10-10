@@ -1,8 +1,6 @@
 import React from 'react';
 import Input from './InputBox';
 
-const fromDecimal = (value, base) => Number(value).toString(base);
-
 class NumberConverter extends React.Component {
   constructor(props) {
     super(props);
@@ -16,15 +14,12 @@ class NumberConverter extends React.Component {
 
   render() {
     const inputBoxes = this.props.bases.map((base, key) => {
-      const value = this.state.baseTenValue
-        ? fromDecimal(this.state.baseTenValue, base)
-        : '';
       return (
         <Input
           name={`Base${base}`}
           onChange={this.handleChange}
           base={base}
-          value={value}
+          baseTenValue={this.state.baseTenValue}
           key={key}
         />
       );
